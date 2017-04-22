@@ -1,6 +1,6 @@
 // Use AJAX | Promises to load all 3 JSON files
 $(document).ready(function(){
-const outputContainer = $("#output");
+// const outputContainer = $("#output");
 
 
 //////////////////////////////////////////////////////////////
@@ -8,22 +8,18 @@ const outputContainer = $("#output");
 
 const writeToDOM = ((result)=>{
 	let domString = "";
-		console.log("WTF", result[2]);
+		// console.log("WTF", result[2]);
 	for (let m=0; m < result[2].length; m++) {
-		console.log("result", result[2]);
-		domString += `<div class="character row">`;
-		domString += `<div class="col-sm-4">`;
+		// console.log("result", result[2]);
+		domString += `<div class="container row characterCard">`;
 		domString += `<img src="${result[2][m].image}">`;
 		domString += `<p>${result[2][m].name}</p>`;
 		domString += `<p>${result[2][m].description}</p>`;
-		//If no description you must add one. if/else? 
-		domString += `</div>`;
+		//If no row description you must add one. if/else? 
 		domString += `</div>`;
 
 	}
-	outputContainer.append(domString);
-
-
+	$("#output").append(domString);
 });
 
 

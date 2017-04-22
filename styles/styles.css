@@ -6,3 +6,8 @@
   padding: 15px; /* firefox bug fix */
   width: auto;
 }
+
+.characterCard {
+	background-color: pink;
+
+}
