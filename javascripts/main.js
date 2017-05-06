@@ -6,23 +6,28 @@ $(document).ready(function(){
 //////////////////////////////////////////////////////////////
 //////////////// DOM functions are going here////////////////
 
+///// click events on the 3 buttons to call the data from the db files 
+$("#btn0").on("click", ()=> {
+	console.log("xmen clicked");
+	// console.log("print to dom", writeToDOM());
+	dataGetter("X-Men");
+;})
 
 
 
-
-
-const writeToDOM = ((result)=>{
+const writeToDOM = ((chars, name)=>{
 	let domString = "";
 		
-	for (let m=0; m < result[2].length; m++) {
+	for (let m=0; m < chars.length; m++) {
+		if (chars[m].team_name === name){
 		
-		domString += `<div class="container characterCard">`;
-		domString += `<img src="${result[2][m].image}">`;
-		domString += `<p>${result[2][m].name}</p>`;
-		domString += `<p>${result[2][m].description}</p>`;
-		//If no row description you must add one. if/else? 
-		domString += `</div>`;
-
+			domString += `<div class="container characterCard">`;
+			domString += `<img src="${chars[m].image}">`;
+			domString += `<p>${chars[m].name}</p>`;
+			domString += `<p>${chars[m].description}</p>`;
+			//If no row description you must add one. if/else? 
+			domString += `</div>`;
+		}
 	}
 	$("#output").append(domString);
 });
@@ -66,25 +71,40 @@ let teamsArray = [];
 let genderArray = [];
 let characters;
 
-	const dataGetter = (teamID) => {Promise.all([loadGenders(), loadTeams(), loadCharacters()])
-	console.log(teamID);
+const dataGetter = (teamName) => {Promise.all([loadGenders(), loadTeams(), loadCharacters()])
 	.then((result)=>{
-		let charactersArray = [];
-		result.forEach((chars)=>{
-			chars.forEach((teams) => {
-				if (teamID === teams.team_id){
-					charactersArray.push(teams);
-				}
+		let genders = result[0];
+		let teams= result[1];
+		let characters = result[2];
+		console.log(result);	
+		// let charactersArray = [];
+		characters.forEach((char)=>{
+			teams.forEach((team) => {
+				genders.forEach((gender) => {
+					if (char.team_id === team.id){
+						char.team_name = team.name;
+					}
+					if (char.gender_id === gender.id){
+						char.gender_name = gender.type;
+					}
+					if(char.description === ""){
+						if(char.gender_name === "Female"){
+							char.description = "abcde fghij klmno pqrst uvwxy z"
+						}else {
+							char.description = "1234567890"
+						}
+
+					}
+				});		
 			});
 		});
-	
-	writeToDOM(result);
+	writeToDOM(characters, teamName);
 	});
 
 };
 
 
-console.log("dataGetter", dataGetter);
+// console.log("dataGetter", dataGetter);
 
 
 });
