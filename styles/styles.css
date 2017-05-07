@@ -8,6 +8,18 @@
 }
 
 .characterCard {
-	background-color: pink;
+	background-color: #000000;
+	color: #f78f3f; 
 
 }
+
+.characterCard img{
+	border-radius: 100%;
+}
+
+.pinkBorder {
+	border: 2px solid pink;
+
+}
+
+
