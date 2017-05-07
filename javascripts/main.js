@@ -9,10 +9,22 @@ $(document).ready(function(){
 ///// click events on the 3 buttons to call the data from the db files 
 $("#btn0").on("click", ()=> {
 	console.log("xmen clicked");
-	// console.log("print to dom", writeToDOM());
 	dataGetter("X-Men");
-;})
+	$(".marvel_logo_load").hide();
+});
 
+$("#btn1").on("click", ()=> {
+	console.log("avengers clicked");
+	dataGetter("The Avengers");
+	$(".marvel_logo_load").hide();
+});
+
+$("#btn2").on("click", ()=> {
+	console.log(" gardians clicked");
+	// console.log("print to dom", writeToDOM());
+	dataGetter("Guardians of the Galaxy");
+	$(".marvel_logo_load").hide();
+});
 
 
 const writeToDOM = ((chars, name)=>{
@@ -21,12 +33,13 @@ const writeToDOM = ((chars, name)=>{
 	for (let m=0; m < chars.length; m++) {
 		if (chars[m].team_name === name){
 		
-			domString += `<div class="container characterCard">`;
+			domString += `<div class="container characterCard row col-sm-3">`;
 			domString += `<img src="${chars[m].image}">`;
 			domString += `<p>${chars[m].name}</p>`;
 			domString += `<p>${chars[m].description}</p>`;
 			//If no row description you must add one. if/else? 
 			domString += `</div>`;
+			// if gender
 		}
 	}
 	$("#output").append(domString);
@@ -67,9 +80,15 @@ const loadTeams=()=> {
 
 
 
-let teamsArray = [];
-let genderArray = [];
-let characters;
+// let teamsArray = [];
+// let genderArray = [];
+// let characters;
+
+
+///////////////////////////////////////////////////////////////////
+///// function dataGetter = Promise taking the objects returns by ajax 
+//  pulling them together and seperating them to be accessed   ///////
+///////////////////////////////////////////////////////////////////
 
 const dataGetter = (teamName) => {Promise.all([loadGenders(), loadTeams(), loadCharacters()])
 	.then((result)=>{
@@ -89,9 +108,9 @@ const dataGetter = (teamName) => {Promise.all([loadGenders(), loadTeams(), loadC
 					}
 					if(char.description === ""){
 						if(char.gender_name === "Female"){
-							char.description = "abcde fghij klmno pqrst uvwxy z"
+							char.description = "abcde fghij klmno pqrst uvwxy z";
 						}else {
-							char.description = "1234567890"
+							char.description = "1234567890";
 						}
 
 					}
@@ -102,9 +121,6 @@ const dataGetter = (teamName) => {Promise.all([loadGenders(), loadTeams(), loadC
 	});
 
 };
-
-
-// console.log("dataGetter", dataGetter);
 
 
 });
