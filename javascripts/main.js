@@ -32,7 +32,6 @@ const writeToDOM = ((chars, name)=>{
 		
 	for (let m=0; m < chars.length; m++) {
 		if (chars[m].team_name === name){
-		
 			domString += `<div class="container characterCard row col-sm-3">`;
 			if (chars[m].gender_id === 0){
 			domString += `<img class="pinkBorder" src="${chars[m].image}">`;
@@ -45,7 +44,7 @@ const writeToDOM = ((chars, name)=>{
 			
 		}
 	}
-	$("#output").append(domString);
+	$("#output").html(domString);
 });
 
 

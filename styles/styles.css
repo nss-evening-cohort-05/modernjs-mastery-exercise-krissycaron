@@ -8,11 +8,19 @@
 }
 
 .characterCard {
+	display: inline-block;
 	background-color: #000000;
-	color: #f78f3f; 
-
+	color: #f78f3f;
+	padding: 20px; 
 }
 
+.characterCard h3 {
+	padding: 10px;
+}
+
+p {
+	padding: 10px;
+}
 .characterCard img{
 	border-radius: 100%;
 }
@@ -23,6 +31,6 @@
 }
 
 .blueBorder {
-	border: 2px solid blue;
+	border: 2px solid blue;	
 }
 
