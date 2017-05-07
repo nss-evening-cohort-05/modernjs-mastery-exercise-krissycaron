@@ -34,12 +34,13 @@ const writeToDOM = ((chars, name)=>{
 		if (chars[m].team_name === name){
 		
 			domString += `<div class="container characterCard row col-sm-3">`;
-			domString += `<img src="${chars[m].image}">`;
+			if (chars[m].gender_id === 0){
+			domString += `<img class="pinkBorder" src="${chars[m].image}">`;
+			} else {
+			domString += `<img class="blueBorder" src="${chars[m].image}">`;
+			}
 			domString += `<h3>${chars[m].name}</h3>`;
 			domString += `<p>${chars[m].description}</p>`;
-				if (chars[m].gender_id === 0){
-					characterCard.addClass(".pinkBorder");
-				}
 			domString += `</div>`;
 			
 		}
