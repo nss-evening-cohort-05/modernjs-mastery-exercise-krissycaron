@@ -8,20 +8,16 @@ $(document).ready(function(){
 
 ///// click events on the 3 buttons to call the data from the db files 
 $("#btn0").on("click", ()=> {
-	console.log("xmen clicked");
 	dataGetter("X-Men");
 	$(".marvel_logo_load").hide();
 });
 
 $("#btn1").on("click", ()=> {
-	console.log("avengers clicked");
 	dataGetter("The Avengers");
 	$(".marvel_logo_load").hide();
 });
 
 $("#btn2").on("click", ()=> {
-	console.log(" gardians clicked");
-	// console.log("print to dom", writeToDOM());
 	dataGetter("Guardians of the Galaxy");
 	$(".marvel_logo_load").hide();
 });
@@ -33,7 +29,7 @@ const writeToDOM = ((chars, name)=>{
 	for (let m=0; m < chars.length; m++) {
 		if (chars[m].team_name === name){
 			domString += `<div class="container characterCard row col-sm-3">`;
-			domString += `<div class="panel">`
+			domString += `<div class="panel">`;
 			if (chars[m].gender_id === 0){
 			domString += `<img class="pinkBorder" src="${chars[m].image}">`;
 			} else {
@@ -42,8 +38,7 @@ const writeToDOM = ((chars, name)=>{
 			domString += `<h3>${chars[m].name}</h3>`;
 			domString += `<p>${chars[m].description}</p>`;
 			domString += `</div>`;
-			domString += `</div>`;
-			
+			domString += `</div>`;	
 		}
 	}
 	$("#output").html(domString);
@@ -82,13 +77,6 @@ const loadTeams=()=> {
 ///// End of AJAX calls ///////
 ///////////////////////////////
 
-
-
-// let teamsArray = [];
-// let genderArray = [];
-// let characters;
-
-
 ///////////////////////////////////////////////////////////////////
 ///// function dataGetter = Promise taking the objects returns by ajax 
 //  pulling them together and seperating them to be accessed   ///////
@@ -98,9 +86,7 @@ const dataGetter = (teamName) => {Promise.all([loadGenders(), loadTeams(), loadC
 	.then((result)=>{
 		let genders = result[0];
 		let teams= result[1];
-		let characters = result[2];
-		console.log(result);	
-		// let charactersArray = [];
+		let characters = result[2];	
 		characters.forEach((char)=>{
 			teams.forEach((team) => {
 				genders.forEach((gender) => {
