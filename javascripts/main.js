@@ -33,6 +33,7 @@ const writeToDOM = ((chars, name)=>{
 	for (let m=0; m < chars.length; m++) {
 		if (chars[m].team_name === name){
 			domString += `<div class="container characterCard row col-sm-3">`;
+			domString += `<div class="panel">`
 			if (chars[m].gender_id === 0){
 			domString += `<img class="pinkBorder" src="${chars[m].image}">`;
 			} else {
@@ -40,6 +41,7 @@ const writeToDOM = ((chars, name)=>{
 			}
 			domString += `<h3>${chars[m].name}</h3>`;
 			domString += `<p>${chars[m].description}</p>`;
+			domString += `</div>`;
 			domString += `</div>`;
 			
 		}
