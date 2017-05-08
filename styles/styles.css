@@ -6,3 +6,31 @@
   padding: 15px; /* firefox bug fix */
   width: auto;
 }
+
+.characterCard {
+	display: inline-block;
+	background-color: #000000;
+	color: #f78f3f;
+	padding: 20px; 
+}
+
+.characterCard h3 {
+	padding: 10px;
+}
+
+p {
+	padding: 10px;
+}
+.characterCard img{
+	border-radius: 100%;
+}
+
+.pinkBorder {
+	border: 2px solid pink;
+
+}
+
+.blueBorder {
+	border: 2px solid blue;	
+}
+
