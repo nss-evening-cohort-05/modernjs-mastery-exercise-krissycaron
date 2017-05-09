@@ -7,6 +7,10 @@
   width: auto;
 }
 
+.panel {
+	max-height: 500px;
+}
+
 .characterCard {
 	display: inline-block;
 	background-color: #000000;
@@ -33,4 +37,5 @@ p {
 .blueBorder {
 	border: 2px solid blue;	
 }
+
 
